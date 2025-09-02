@@ -1,0 +1,77 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .card {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+    .card-body {
+        background-color: #0e2b0d;
+        color: white;
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card-img-left {
+        flex: 0 0 40%;
+        max-width: 40%;
+        overflow: hidden;
+    }
+    .card-img-left img {
+        width: 100%;
+        height: auto;
+    }
+    .btn-group {
+        margin-top: 20px;
+    }
+    .contact-button {
+        background-color: #ffffff;
+        color: #0e2b0d;
+        border: none;
+        margin-right: 10px;
+        border: 2px solid #dcae51;
+    }
+    .contact-button:hover {
+        background-color: white;
+        border: 4px solid #dcae51;
+        color: black;
+    }
+</style>
+
+<section>
+    <div class="container mt-4">
+        <h1 class="mb-4">Detalhes do Produto</h1>
+        <div class="card">
+            <div class="card-img-left">
+                {% if roupa_intima.imagem %}
+                    <img src="{{ roupa_intima.imagem.url }}" alt="Imagem de {{ roupa_intima.nome }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/400" alt="Imagem não disponível">
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <h2 class="card-title">{{ roupa_intima.nome }}</h2>
+                <p class="card-text"><strong>Preço:</strong> {{ roupa_intima.preco }}</p>
+                <p class="card-text"><strong>Detalhes:</strong> {{ roupa_intima.detalhes }}</p>
+                <p class="card-text"><strong>Cor:</strong> {{ roupa_intima.get_cor_display }}</p>
+                <p class="card-text"><strong>Tamanho:</strong> {{ roupa_intima.get_tamanho_display }}</p>
+                <p class="card-text"><strong>Em Estoque:</strong> {{ roupa_intima.quantidade_estoque }}</p>
+                <div class="btn-group">
+                    <a href="{% url 'adicionar_ao_carrinho' roupa_intima.id 'Roupa_intima' %}" class="btn contact-button">Adicionar ao Carrinho</a>
+                    <button class="btn contact-button">Comprar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br><br>
+
+{% endblock %}

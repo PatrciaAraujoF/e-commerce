@@ -1,0 +1,36 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    label {
+        font-weight: bold;
+        color: black;
+    }
+</style>
+
+<section class="container">
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <br><br>
+    <h1 class="text-center fw-bolder ">Adicionar Roupas Intimas</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="contact-button" type="submit">Salvar</button>
+    </form>
+</section>
+<br><br>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+.card-body {
+    background-color: #0e2b0d;
+}
+.card-title, .card-text {
+    color: white;
+}
+.card_botao {
+    border-radius: 50px;
+    border: 2px solid #dcae51; 
+    text-decoration: none; 
+    color: white; 
+}
+.card_botao:hover {
+    background-color: white;
+    border: 4px solid #dcae51;
+}
+.card img {
+    width: 100%;
+    height: 200px; /* Define uma altura fixa */
+    object-fit: contain; /* Ajusta a imagem para caber completamente no espaço, mantendo as proporções */
+    background-color: #f0f0f0; /* Define uma cor de fundo para preencher quaisquer espaços vazios */
+}
+</style>
+
+<h2 class="text-center fw-bolder p-5">Roupas Íntimas</h2>
+<section class="p-5">
+    <div class="container mt-4">
+        <div class="row">
+            {% for roupa_intima in roupas_intimas %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if roupa_intima.imagem %}
+                            <img src="{{ roupa_intima.imagem.url }}" class="card-img-top" alt="Imagem de {{ roupa_intima.nome }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem não disponível">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ roupa_intima.nome }}</h5>
+                            <p class="card-text">Preço: {{ roupa_intima.preco }}</p>
+                            <a href="{% url 'detalhes_roupa_intima' roupa_intima.id %}" class="btn card_botao">Mais detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center">Nenhuma roupa íntima disponível no momento.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>  
+{% endblock %}

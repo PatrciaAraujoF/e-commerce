@@ -1,0 +1,81 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: #f0f0f0;
+}
+
+    .card-body {
+        background-color: #0e2b0d;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .btn-group {
+        margin-top: 15px;
+    }
+    .card-botao, .btn-warning, .btn-danger {
+        border: none;
+        margin-right: 5px;
+        border: 2px solid #dcae51;
+        color: #eef0ee;
+        text-transform: uppercase;
+        transition: all 0.3s;
+    }
+    .card-botao:hover, .btn-warning:hover, .btn-danger:hover {
+        background-color: white;
+        border: 4px solid #dcae51;
+        color: black;
+    }
+
+</style>
+
+<section class="p-5 container">
+<h2 class="text-center fw-bolder p-5">Blusas</h2>
+<a href="{% url 'adicionar_blusa' %}" class="btn contact-button ">Adicionar blusa</a>
+    <div class="container mt-4">
+        <div class="row">
+            {% for blusa in blusas %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            {% if blusa.imagem %}
+                <img src="{{ blusa.imagem.url }}" alt="Imagem de {{ blusa.nome }}">
+            {% else %}
+                <img src="https://via.placeholder.com/150" alt="Imagem não disponível">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ blusa.nome }}</h5>
+                <p class="card-text">Preço: {{ blusa.preco }}</p>
+                <div class="btn-group">
+                    <a href="{% url 'detalhes_blusa' blusa.id %}" class="btn card-botao">Detalhes</a>
+                    <a href="{% url 'editar_blusa' blusa.id %}" class="btn card-botao">Editar</a>
+                    <a href="{% url 'excluir_blusa' blusa.id %}" class="btn card-botao">Excluir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% empty %}
+    <p class="text-center">Nenhuma blusa disponível no momento.</p>
+{% endfor %}
+</section>
+<section class="p-5">
+    <div class="d-flex justify-content-center">
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn contact-button">Logout</button>
+    </form>
+</div>
+</section>
+{% endblock %}

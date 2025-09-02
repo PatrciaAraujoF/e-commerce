@@ -1,0 +1,104 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+  
+.card img {
+    width: 100%;
+    height: 200px; 
+    object-fit: contain;
+    background-color: #f0f0f0; 
+}
+
+    .card-body {
+        background-color: #0e2b0d;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .btn-group {
+        margin-top: 15px;
+    }
+    .card-botao, .btn-warning, .btn-danger {
+        border: none;
+        margin-right: 5px;
+        border: 2px solid #dcae51;
+        color: #eef0ee;
+        text-transform: uppercase;
+        transition: all 0.3s;
+    }
+    .card-botao:hover, .btn-warning:hover, .btn-danger:hover {
+        background-color: white;
+        border: 4px solid #dcae51;
+        color: black;
+    }
+
+</style>
+
+
+<h1 class="text-center fw-bold pt-5">Bem-vindo ao Setor Administrativo</h1>
+<h5 class="text-center fw-bold ">Olá, {{ user.nome }}!</h5>
+<br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Vestidos</h2>
+                    <div class="btn-group">
+                        <a href="{% url 'vestidos_adm' %}" class="btn card-botao">Ver Todos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Blusas</h2>
+                    <div class="btn-group">
+                        <a href="{% url 'blusas_adm' %}" class="btn card-botao">Ver Todos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Calças</h2>
+                    <div class="btn-group">
+                        <a href="{% url 'calcas_adm' %}" class="btn card-botao">Ver Todos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Roupas Intimas</h2>
+                    <div class="btn-group">
+                        <a href="{% url 'ri_adm' %}" class="btn card-botao">Ver Todos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="p-5">
+    <div class="d-flex justify-content-center">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn contact-button">Logout</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

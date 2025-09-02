@@ -1,0 +1,24 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% block content %}
+<style>
+    .contact-button {
+        background-color: #ffffff;
+        color: #0e2b0d;
+        border: none;
+        margin-right: 10px;
+        border: 2px solid #dcae51;
+    }
+    .contact-button:hover {
+        background-color: white;
+        border: 4px solid #dcae51;
+        color: black;
+    }
+</style>
+
+<div class="container mt-5 text-center">
+    <h2>Erro</h2>
+    <p class="mt-4">{{ mensagem }}</p>
+    <a href="{% url 'index' %}" class="btn contact-button mt-3">Voltar para a Página Inicial</a>
+</div>
+<br><br>
+{% endblock %}

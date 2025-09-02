@@ -1,0 +1,21 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    label {
+        font-weight: bold; 
+        color: black; 
+    }
+</style>
+
+<h2  class="text-center fw-bolder">Editar conteúdo</h2>
+<section class="p-5">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn contact-button mr-2" type="submit">Salvar alterações</button>
+        <a href="{% url 'roupas_intimas' %}" class="btn contact-button">Cancelar</a>
+
+    </form>
+</section>                     
+{% endblock %}

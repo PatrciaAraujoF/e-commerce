@@ -1,0 +1,80 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .card {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+    .card-body {
+        background-color: #0e2b0d;
+        color: white;
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card-img-left {
+        flex: 0 0 40%;
+        max-width: 40%;
+        overflow: hidden;
+    }
+    .card-img-left img {
+        width: 100%;
+        height: auto;
+    }
+    .btn-group {
+        margin-top: 20px;
+    }
+    .contact-button {
+        background-color: #ffffff;
+        color: #0e2b0d;
+        border: none;
+        margin-right: 10px;
+        border: 2px solid #dcae51;
+    }
+    .contact-button:hover {
+        background-color: white;
+        border: 4px solid #dcae51;
+        color: black;
+    }
+</style>
+
+<section class="p-5">
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mb-4"> <!-- Ajusta a largura da coluna -->
+                <div class="card">
+                    <div class="card-img-left">
+                        {% if vestido.imagem %}
+                            <img src="{{ vestido.imagem.url }}" alt="Imagem de {{ vestido.nome }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/150" alt="Imagem não disponível">
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ vestido.nome }}</h5>
+                        <p class="card-text">Preço: {{ vestido.preco }}</p>
+                        <p class="card-text">Cor: {{ vestido.get_cor_display }}</p>
+                        <p class="card-text">Tamanho: {{ vestido.get_tamanho_display }}</p>
+                        <p class="card-text">Detalhes: {{ vestido.detalhes }}</p>
+                        <p class="card-text">Quantidade em Estoque: {{ vestido.quantidade_estoque }}</p>
+                        <div class="btn-group">
+                           <a href="{% url 'adicionar_ao_carrinho' vestido.id 'Vestido' %}" class="btn contact-button">Adicionar ao Carrinho</a>
+
+
+                            <a href="#" class="btn contact-button">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    label {
+        font-weight: bold; 
+        color: black; 
+    }
+</style>
+<section>
+    <div class="container mt-5">
+        <h1 class="titulo_destaques">Login</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    Usuário ou senha incorretos.
+                </div>
+            {% endif %}
+            <button type="submit" class="btn contact-button">Entrar</button>
+        </form>
+    </div>
+</section>
+<br><br><br>
+{% endblock %}

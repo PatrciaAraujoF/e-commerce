@@ -1,0 +1,310 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<style>
+    .custom-card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+.custom-card img {
+    width: 100%;
+    height: 200px; 
+    object-fit: contain;
+    background-color: #f0f0f0; 
+}
+
+    .custom-card-body {
+        background-color: #0e2b0d;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .btn-group {
+        margin-top: 15px;
+    }
+    .custom-card-botao, .btn-warning, .btn-danger {
+        border: none;
+        margin-right: 5px;
+        border: 2px solid #dcae51;
+        color: #eef0ee;
+        text-transform: uppercase;
+        transition: all 0.3s;
+    }
+    .custom-card-botao:hover, .btn-warning:hover, .btn-danger:hover {
+        background-color: white;
+        border: 4px solid #dcae51;
+        color: black;
+    }
+</style>
+<section class="section1">
+ <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <!-- Botão do Menu Sanduíche -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Itens do Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'cadastro' %}" >Criar Conta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="#">
+                        <i class="bi bi-heart navbar-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="#" >
+                        <i class="bi bi-cart navbar-icon"></i>
+                    </a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<img src="{% static 'assets/imagens/logo.png' %}" alt="Logomarca DESIRE" class="logo-image">
+<br>
+<br>
+<h1 class="ps-5 titulo_sessao1">Desperte a Diva em Você <br> com a Moda Desire!</h1>
+<a href="#" class="contact-button mt-5 ms-5">Fale com <strong>Desire Moda Feminina</strong></a><br><br><br>
+</section>
+
+
+<section class="p-5">
+    <div class="text-center">
+        <h2 class="titulo_destaques">Busque por categoria</h2>
+    </div>
+    <br><br>
+    <div class="d-flex justify-content-center flex-wrap">
+        <a href="{% url 'blusas' %}" class="card circular-card">
+            <img src="{% static 'assets/imagens/blusa.png' %}" alt="Descrição 1" class="img-card">
+        </a>
+        <a href="{% url 'calcas' %}" class="card circular-card">
+            <img src="{% static 'assets/imagens/calca.png' %}" alt="Descrição 2" class="img-card">
+        </a>
+        <a href="{% url 'roupas_intimas' %}" class="card circular-card">
+            <img src="{% static 'assets/imagens/roupa-de-baixo.png' %}" alt="Descrição 3" class="img-card">
+        </a>
+        <a href="{% url 'vestidos' %}" class="card circular-card">
+            <img src="{% static 'assets/imagens/vestido-curto.png' %}" alt="Descrição 4" class="img-card">
+        </a>
+    </div>
+</section>
+
+
+<section class="destaques p-5">
+    <h2 class="titulo_destaques">Destaques</h2>
+    <br><br><br>
+    <div class="row">
+        {% for vestido in page_vestidos %}
+            <div class="col-md-4 mb-4">
+                <div class="custom-card">
+                    {% if vestido.imagem %}
+                        <img src="{{ vestido.imagem.url }}" class="card-img-top" alt="Imagem de {{ vestido.nome }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem não disponível">
+                    {% endif %}
+                    <div class="custom-card-body">
+                        <h5 class="card-title">{{ vestido.nome }}</h5>
+                        <p class="card-text">Preço: {{ vestido.preco }}</p>
+                        <a href="{% url 'detalhes_vestido' vestido.id %}" class="btn custom-card-botao">Mais detalhes</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">Nenhum vestido disponível no momento.</p>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_vestidos.has_previous %}
+                <a href="?page_vestidos=1">&laquo; primeira</a>
+                <a href="?page_vestidos={{ page_vestidos.previous_page_number }}">anterior</a>
+            {% endif %}
+
+            <span class="current">
+                Página {{ page_vestidos.number }} de {{ page_vestidos.paginator.num_pages }}.
+            </span>
+
+            {% if page_vestidos.has_next %}
+                <a href="?page_vestidos={{ page_vestidos.next_page_number }}">próxima</a>
+                <a href="?page_vestidos={{ page_vestidos.paginator.num_pages }}">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</section>
+
+<section class="p-5">
+    <div class="container mt-4">
+        <div class="row">
+            {% for blusa in page_blusas %}
+                <div class="col-md-4 mb-4">
+                    <div class="custom-card">
+                        {% if blusa.imagem %}
+                            <img src="{{ blusa.imagem.url }}" class="card-img-top" alt="Imagem de {{ blusa.nome }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem não disponível">
+                        {% endif %}
+                        <div class="custom-card-body">
+                            <h5 class="card-title">{{ blusa.nome }}</h5>
+                            <p class="card-text">Preço: {{ blusa.preco }}</p>
+                            <a href="{% url 'detalhes_blusa' blusa.id %}" class="btn custom-card-botao">Mais detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center">Nenhuma blusa disponível no momento.</p>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_blusas.has_previous %}
+                    <a href="?page_blusas=1">&laquo; primeira</a>
+                    <a href="?page_blusas={{ page_blusas.previous_page_number }}">anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ page_blusas.number }} de {{ page_blusas.paginator.num_pages }}.
+                </span>
+
+                {% if page_blusas.has_next %}
+                    <a href="?page_blusas={{ page_blusas.next_page_number }}">próxima</a>
+                    <a href="?page_blusas={{ page_blusas.paginator.num_pages }}">última &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="p-5">
+    <div class="container mt-4">
+        <div class="row">
+            {% for roupa_intima in page_roupas_intimas %}
+                <div class="col-md-4 mb-4">
+                    <div class="custom-card">
+                        {% if roupa_intima.imagem %}
+                            <img src="{{ roupa_intima.imagem.url }}" class="card-img-top" alt="Imagem de {{ roupa_intima.nome }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem não disponível">
+                        {% endif %}
+                        <div class="custom-card-body">
+                            <h5 class="card-title">{{ roupa_intima.nome }}</h5>
+                            <p class="card-text">Preço: {{ roupa_intima.preco }}</p>
+                            <a href="{% url 'detalhes_roupa_intima' roupa_intima.id %}" class="btn custom-card-botao">Mais detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center">Nenhuma roupa íntima disponível no momento.</p>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_roupas_intimas.has_previous %}
+                    <a href="?page_roupas_intimas=1">&laquo; primeira</a>
+                    <a href="?page_roupas_intimas={{ page_roupas_intimas.previous_page_number }}">anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ page_roupas_intimas.number }} de {{ page_roupas_intimas.paginator.num_pages }}.
+                </span>
+
+                {% if page_roupas_intimas.has_next %}
+                    <a href="?page_roupas_intimas={{ page_roupas_intimas.next_page_number }}">próxima</a>
+                    <a href="?page_roupas_intimas={{ page_roupas_intimas.paginator.num_pages }}">última &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="p-5">
+    <div class="container mt-4">
+        <div class="row">
+            {% for calca in page_calcas %}
+                <div class="col-md-4 mb-4">
+                    <div class="custom-card">
+                        {% if calca.imagem %}
+                            <img src="{{ calca.imagem.url }}" class="card-img-top" alt="Imagem de {{ calca.nome }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem não disponível">
+                        {% endif %}
+                        <div class="custom-card-body">
+                            <h5 class="card-title">{{ calca.nome }}</h5>
+                            <p class="card-text">Preço: {{ calca.preco }}</p>
+                            <a href="{% url 'detalhes_calca' calca.id %}" class="btn custom-card-botao">Mais detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center">Nenhuma calça disponível no momento.</p>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_calcas.has_previous %}
+                    <a href="?page_calcas=1">&laquo; primeira</a>
+                    <a href="?page_calcas={{ page_calcas.previous_page_number }}">anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ page_calcas.number }} de {{ page_calcas.paginator.num_pages }}.
+                </span>
+
+                {% if page_calcas.has_next %}
+                    <a href="?page_calcas={{ page_calcas.next_page_number }}">próxima</a>
+                    <a href="?page_calcas={{ page_calcas.paginator.num_pages }}">última &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section class="Ultima_sessao p-5">
+    <br><br><br><br>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 col-sm-12">
+                <i class="bi bi-alarm icone_ultima_sessao"></i>
+                <p class="texto_forte">Entrega Rápida para todo Brasil</p>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <i class="bi bi-paypal icone_ultima_sessao"></i>
+                <p class="texto_forte">Pagamento seguro</p>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <i class="bi bi-gem icone_ultima_sessao"></i>
+                <p class="texto_forte">Sorteios com cupons de descontos para clientes</p>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</section>
+              
+{% endblock %}

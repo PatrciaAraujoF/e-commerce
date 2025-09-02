@@ -1,0 +1,15 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+<section class="p-5 container">
+    <h2 class="text-center fw-bolder p-5">Atualizar Quantidade</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" class="form-control" id="quantidade" name="quantidade" value="{{ item.quantidade }}" min="1">
+        </div>
+        <button type="submit" class="btn card-botao mt-3">Atualizar</button>
+    </form>
+</section>
+{% endblock %}

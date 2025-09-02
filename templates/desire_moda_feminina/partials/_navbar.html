@@ -1,0 +1,54 @@
+{% load static %}
+<style>
+.custom-navbar {
+    background-color: #0e2b0d;
+    color: aliceblue;
+}
+.custom-navbar .nav-link,
+.custom-navbar .navbar-toggler-icon,
+.custom-navbar .form-control,
+.custom-navbar .btn {
+    color: white !important;
+}
+</style>
+
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+        <!-- Botão do Menu Sanduíche -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Itens do Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                 <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'index' %}">Página Inicial</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'dashboard' %}">Minha Conta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'vestidos' %}">Vestidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'calcas' %}">Calças</a>
+                </li>
+                                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'blusas' %}" >Blusas</a>
+                </li>
+                   </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'roupas_intimas' %}">Moda Intima</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'carrinho' %}">Meu Carrinho</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>

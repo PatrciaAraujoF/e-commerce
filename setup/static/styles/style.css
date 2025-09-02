@@ -1,0 +1,302 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    margin: 0em;
+    padding: 0em;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* SECTION1 */
+
+.section1 {
+    background-image: url('../assets/imagens/fundo.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 95% auto;
+    color: black; /* Adicionado para maior contraste com o fundo */
+}
+
+.section1 .navbar {
+    background: transparent; /* Torna a navbar transparente para mostrar o fundo da seção */
+    color: inherit; /* Garante que a cor do texto siga a cor definida na section */
+    z-index: 1; /* Garante que a navbar fique sobreposta ao conteúdo, se necessário */
+}
+
+.navbar-icon {
+    font-size: 1.5rem; /* Aumenta o tamanho dos ícones */
+}
+
+.nav-item {
+    margin-right: 15px; /* Adiciona espaço à direita de cada item */
+}
+
+.nav-link {
+    display: flex;
+    align-items: center; /* Alinha verticalmente o conteúdo */
+    padding-top: 5px; /* Ajusta o padding superior para centralizar verticalmente */
+}
+
+.contact-button {
+    display: inline-block; /* Para estilos de botão */
+    padding: 10px 20px; /* Ajuste conforme necessário */
+    border-radius: 50px; /* Faz as bordas totalmente arredondadas */
+    border: 2px solid #dcae51; /* Borda com cor especificada */
+    background-color: initial; /* Cor de fundo inicial (ajuste conforme necessário) */
+    color: initial; /* Cor do texto inicial (ajuste conforme necessário) */
+    text-decoration: underline; /* Sublinha o texto */
+    text-decoration-color: #dcae51; /* Cor do sublinhado */
+    transition: background-color 0.3s ease, color 0.3s ease, text-decoration-color 0.3s ease; /* Suaviza a transição das cores */
+}
+
+.contact-button:hover {
+    background-color: black; /* Cor de fundo ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
+    text-decoration-color: white; /* Muda a cor do sublinhado para branco no hover */
+}
+
+
+.logo-image {
+    width: 40em;
+    height: auto;
+}
+
+.contact-button {
+    display: inline-block; /* Para estilos de botão */
+    padding: 10px 20px; /* Ajuste conforme necessário */
+    border-radius: 50px; /* Faz as bordas totalmente arredondadas */
+    border: 2px solid #dcae51; /* Borda com cor especificada */
+    background-color: initial; /* Cor de fundo inicial (ajuste conforme necessário) */
+    color: initial; /* Cor do texto inicial (ajuste conforme necessário) */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza a transição das cores */
+}
+
+.contact-button:hover {
+    background-color: black; /* Cor de fundo ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
+}
+
+
+
+.contact-info {
+    display: flex;
+    align-items: center;
+}
+
+.website-info p {
+    margin: 0;
+}
+
+.email-info {
+    flex-grow: 1;
+}
+
+.dashed-line {
+    color: #dcae51;
+    margin: 0;
+    text-align: center;
+}
+
+.titulo_sessao1 {
+    font-size: 2em; /* Você pode ajustar o valor (em pixels, ems, etc.) conforme necessário */
+}
+
+
+/* sessao detalhes */
+.destaques {
+    text-align: center; /* Centraliza o conteúdo dentro da seção */
+}
+
+/* sessao categorias */
+
+.circular-card {
+    width: 150px; /* Aumentado em 30% */
+    height: 150px; /* Aumentado em 30% */
+    border-radius: 50%; /* Torna o card circular */
+    border: 4px solid black; /* Borda preta de 4px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px; /* Margem entre os cards para ajuste fino */
+    overflow: hidden; /* Garante que a imagem não ultrapasse a borda circular */
+}
+
+.img-card {
+    width: 60%;
+    height: 60%;
+    object-fit: cover; /* Faz com que a imagem se ajuste sem distorções */
+}
+
+
+
+.titulo_destaques {
+    text-align: center; /* Garanta que o texto esteja centralizado */
+    margin-bottom: 20px; /* Espaçamento inferior para separar do conteúdo abaixo */
+}
+
+
+
+
+
+
+
+
+
+
+.titulo_destaques {
+    font-weight: bolder; /* Texto em negrito */
+    font-size: 2.5rem; /* Tamanho da fonte */
+    margin-bottom: 20px;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    display: inline-block; /* Apenas o texto é sublinhado */
+}
+
+.titulo_destaques::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o sublinhado */
+    bottom: -5px; /* Ajuste a posição da linha */
+    width: 100%;
+    height: 2px; /* Espessura da linha */
+    background-color: #dcae51; /* Cor da linha */
+    border-radius: 2px; /* Bordas arredondadas */
+}
+
+
+
+/* Ultima_sessao */
+
+.icone_ultima_sessao {
+    font-size: 5em; /* Tamanho aumentado */
+}
+
+.texto_forte {
+    font-weight: bolder; /* Texto em negrito */
+    font-size: 1rem; /* Ajuste do tamanho da fonte, se necessário */
+   
+}
+
+
+
+
+
+
+/* FOOTER */
+footer {
+    background-color: #0e2b0d;
+    color: white;
+}
+
+footer .col-lg-4,
+footer .col-md-12 {
+    margin-bottom: 20px;
+}
+
+footer h5 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block; /* Para que apenas o texto tenha a linha sublinhada */
+    margin-bottom: 20px; /* Espaço opcional embaixo do título */
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    /* Texto com sublinhado elegante */
+    font-size: 1.5em; /* Exemplo, ajuste conforme necessário */
+    
+
+    /* Estilo personalizado para o sublinhado */
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px; /* Ajuste a posição da linha */
+        width: 100%;
+        height: 2px; /* Espessura da linha */
+        background-color: #dcae51; /* Cor da linha */
+        border-radius: 2px; /* Bordas arredondadas para um efeito mais suave */
+    }
+}
+
+
+footer p {
+    margin-bottom: 10px;
+}
+
+.logo-footer {
+    max-width: 80%; /* ou o percentual desejado */
+    height: auto;
+}
+
+
+/* BOOTOES INSTITUCIONAL DO FOOTER */
+footer .col-lg-4.col-md-12.mb-3 a {
+    display: block; /* Exibe cada link como um bloco, fazendo com que fiquem um abaixo do outro */
+    color: white; /* Define a cor do texto como branca */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+/* ICONES DO FOOTER */
+.footer-icon {
+    /* Adicione suas propriedades CSS aqui */
+    font-size: 1.5em; /* Exemplo: aumenta o tamanho do ícone */
+    color: #dcae51; /* Exemplo: define a cor branca */
+    margin-right: 5px; /* Exemplo: adiciona espaço à direita do ícone */
+}
+
+
+/* Ajustes para dispositivos móveis */
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinha à esquerda */
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    .navbar-nav .nav-item {
+        margin-right: 0; /* Remove o espaçamento à direita */
+        margin-bottom: 10px; /* Adiciona espaçamento abaixo de cada item */
+    }
+
+    .navbar .form-control {
+        width: 100%; /* Faz o campo de busca ocupar totalmente a largura */
+        margin-bottom: 10px; /* Espaço abaixo do campo de busca */
+    }
+
+    /* Menu Sanduíche */
+    .navbar-toggler {
+        border: none; /* Remove a borda do botão do menu */
+    }
+
+    /* Centralização da imagem e da seção */
+    .section1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza horizontalmente os elementos dentro da seção */
+         /* Imagem de fundo para mobile */
+        background-size: cover; /* Faz a imagem de fundo cobrir a seção */
+        text-align: center; /* Centraliza texto dentro da seção */
+    }
+
+    .logo-image {
+        width: 20em; /* Reduz o tamanho da logo em dispositivos móveis */
+        margin: 0 auto; /* Centraliza a imagem logo */
+    }
+
+    .titulo_sessao1 {
+        font-size: 1.5em; /* Ajusta o tamanho do título para caber melhor em telas pequenas */
+    }
+
+    .contact-button {
+        font-size: 0.9em; 
+        background-color: black;
+        color: aliceblue;
+    }
+}
+
+/* Você pode adicionar outras media queries específicas para diferentes tamanhos de tela conforme necessário */

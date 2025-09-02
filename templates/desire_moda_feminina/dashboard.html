@@ -1,0 +1,25 @@
+{% extends 'desire_moda_feminina/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1 class="text-center fw-bold pt-5">Bem-vindo ao Dashboard</h1>
+<h5 class="text-center fw-bold ">Olá, {{ user.nome }}!</h5>
+<br><br>
+<section>
+    <h3>Acompanhe aqui seus pedidos</h3>
+</section>
+<section>
+    <h3>Histórico de Compras</h3>
+</section>
+<section class="p-5">
+    <div class="d-flex justify-content-center">
+    <a href="{% url 'administrativo' %}" class="btn contact-button me-2">Setor Administrativo</a>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn contact-button">Logout</button>
+    </form>
+</div>
+</section>
+
+
+{% endblock %}
