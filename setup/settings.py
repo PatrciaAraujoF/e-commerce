@@ -2,18 +2,17 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-# Carregar variáveis de ambiente do arquivo .env
+
 load_dotenv()
 
-# Caminho base do projeto
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Configurações de segurança
 SECRET_KEY = os.getenv('SECRET_KEY', 'chave-padrao-para-desenvolvimento')
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['desiremodafeminia.site', '18.231.176.119']
 
-# Definição das aplicações Django instaladas
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -28,7 +27,7 @@ INSTALLED_APPS = [
     'roupa_intima',
 ]
 
-# Middleware
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -39,11 +38,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Autenticação personalizada
+
 AUTH_USER_MODEL = 'desire_moda_feminina.CustomUser'
 ROOT_URLCONF = 'setup.urls'
 
-# Configurações de templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
